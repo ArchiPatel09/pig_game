@@ -1,0 +1,87 @@
+<!--
+	Assignment 5-3 Instructions: Convert the PIG app to objects
+
+	In this assignment, you’ll be converting the PIG application from chapter 12 so it uses 
+	objects. When you’re done, the application will work the same as it did before, but the 
+	code will be organized differently.
+
+	To start this game, you enter the names for the two players and click the New Game button. 
+	Then, the message below the names indicates whose turn it is. When the game is over, 
+	a dialog box announces the winner.
+
+	1. Open and run the starter folder, pig.
+	2. Review the library_die.js file. Note that it contains a class named Die with no properties and a single method that rolls a die.
+	3. Review the library_pig.js file. Note that it contains a class named Pig that has a property 
+	that’s an object created from the Die class. The Pig class has a constructor() function with 
+	five data properties, a read-only accessor property, and three methods.
+	
+	*4. Review the library_game.js file. Note that it’s an object literal with three data 
+	properties, one read-only accessor property, and five methods. The start() method and 
+	isValid read-only property are already coded for you, and the other methods have comments 
+	indicating what they should do. Now, finish the code for those four methods and make them 
+	cascading methods when you can.
+	*5. Review the pig.js file and note that it supplies the ready event handler and the click 
+	event handler of the New Game button. There are also starts for the click event handlers 
+	for the Roll and Hold buttons, which you need to finish. These handlers should use the 
+	methods of the game object in the library_game.js file.
+	*6. In index.html, add the text in the <small> tag to your name and student number.
+-->
+		
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PIG</title>
+    <link rel="stylesheet" href="pig.css">
+</head>
+
+<body>
+    <main id="main">
+		<h1>Let's Play PIG!</h1>
+		<fieldset>
+			<legend>Rules</legend>
+			<ul>
+				<li>First player to <span id="winning"></span> wins.</li>
+				<li>Players take turns rolling the die.</li>
+				<li>Turn ends when player rolls a 1 or chooses to hold.</li>
+				<li>If player rolls a 1, they lose all points earned during the turn.</li>
+				<li>If player holds, points earned during the turn are added to their total.</li>
+			</ul>
+		</fieldset>
+
+		<label for="player1">Player 1</label>
+		<input type="text" id="player1" >
+
+		<label for="score1">Score</label>
+		<input type="text" id="score1" value="0" disabled><br>
+
+		<label for="player2">Player 2</label>
+		<input type="text" id="player2">  
+
+		<label for="score2">Score</label>
+		<input type="text" id="score2" value="0" disabled>
+
+		<input type="button" id="new_game" value="New Game"><br>
+
+		<section id="turn" class="hide">
+			<div><span id="currentPlayer"></span>'s turn</div>
+
+			<input type="button" id="roll" value="Roll">
+			<input type="button" id="hold" value="Hold">
+
+			<label for="die">Die</label>
+				<input type="text" id="die" disabled>
+				
+			<label for="total">Total</label>
+				<input type="text" id="total" disabled> 
+		</section>
+		
+	</main>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<script src="library_die.js"></script>
+    <script src="library_pig.js"></script>
+    <script src="library_game.js"></script>
+    <script src="pig.js"></script>
+</body>
+</html>
